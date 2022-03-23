@@ -165,7 +165,8 @@ export class EchoServer {
      * Return a channel by its socket id.
      */
     find(socket_id: string): any {
-        return this.server.io.sockets.connected[socket_id];
+//         return this.server.io.sockets.connected[socket_id];
+         return (socket_id in this.server.io.sockets)? this.server.io.sockets.connected[socket_id] : this.server.io.sockets.sockets.get(socket_id);
     }
 
     /**
